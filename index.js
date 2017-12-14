@@ -1,13 +1,20 @@
 var http = require('http');
+var azure = require('azure');
+const express = require('express');
+const router = express();
+var app = require('./app');
 
-var server = http.createServer(function(request, response) {
+router.get('/createtopic/', app.createTopic);
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World!");
+router.get('/createsubscription/', app.createsubscription);
+router.get('/createMelbourneSubscription/', app.createMelbourneSubscription);
+router.get('/createSydneySubscription/', app.createSydneySubscription);
 
-});
+router.get('/sendmessage/', app.sendmessage);
 
-var port = process.env.PORT || 1337;
-server.listen(port);
+router.get('/receiveMessage/', app.receiveMessage);
+router.get('/getsubscription/', app.getSubscription);
 
-console.log("Server running at http://localhost:%d", port);
+router.get('/', (req, res) => res.send('Hello World!'));
+
+router.listen(3000, () => console.log('Example app listening on port 3000!'));

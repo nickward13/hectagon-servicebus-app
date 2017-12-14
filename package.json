@@ -10,5 +10,9 @@
     },
     "scripts": {
         "start": "node index.js"
+    },
+    "dependencies": {
+        "azure": "^2.2.1-preview",
+        "express": "^4.16.2"
     }
 }
