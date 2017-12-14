@@ -1,5 +1,5 @@
 var azure=require('azure');
-var serviceBusService = azure.createServiceBusService("Endpoint=sb://hectagon.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=X8hoEuRu5aOtKpPd+S446uiamzj8zAOdX7UD6cnxymA=");
+var serviceBusService = azure.createServiceBusService("Endpoint=sb://hectagon.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=vnrg/O9fqvuLaCFeSBcgmug8XzXIgdMeWZPiPLfzq6s=");
 
 var sendJsonResponse = function(res, status, content) {
     res.status(status);
