@@ -8,7 +8,10 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/index.js"
+            "program": "${workspaceFolder}/index.js",
+            "env": {
+                "AZURE_SERVICEBUS_CONNECTION_STRING": "Endpoint=sb://hectagon1.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=y/zNtGMTtFpNjMoXat2fAsjAkDHk/MEZNCdg4vW1+98="
+            }
         }
     ]
 }
