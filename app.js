@@ -23,17 +23,7 @@ module.exports.createTopic = function (req, res) {
     });
 };
 
-module.exports.createsubscription = function (req, res) {
-    serviceBusService.createSubscription('orders','AllMessages',function(error){
-        if(!error){
-            // subscription created
-            console.log('subscription created.');
-            sendJsonResponse(res, 200, "subscription created");
-        }
-    });
-};
-
-module.exports.createMelbourneSubscription = function (req, res) {
+var createMelbourneSubscription = function (req, res) {
     serviceBusService.createSubscription('orders', 'MelbourneMessages', function(error){
         if(!error){
             sendJsonResponse(res, 200, "subscription created");
@@ -64,7 +54,7 @@ module.exports.createMelbourneSubscription = function (req, res) {
     }
 };
 
-module.exports.createSydneySubscription = function (req, res) {
+var createSydneySubscription = function (req, res) {
     serviceBusService.createSubscription('orders', 'SydneyMessages', function(error){
         if(!error){
             sendJsonResponse(res, 200, "subscription created");
@@ -92,6 +82,17 @@ module.exports.createSydneySubscription = function (req, res) {
                 console.log(error);
             }
         }
+    }
+};
+
+module.exports.createsubscription = function (req, res) {
+    if(req.query.branch=="Sydney")
+    {
+        createMelbourneSubscription(req, res);
+    } else if (req.query.branch=="Melbourne") {
+        createSydneySubscription(req,res);
+    } else {
+        sendJsonResponse(res, 400, "Please provide either Melbourne or Sydney branch on URL");
     }
 };
 

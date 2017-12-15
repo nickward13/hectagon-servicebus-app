@@ -4,13 +4,10 @@ const express = require('express');
 const router = express();
 var app = require('./app');
 
-router.get('/createtopic/', app.createTopic);
+router.post('/createtopic/', app.createTopic);
+router.post('/createsubscription/', app.createsubscription);
 
-router.get('/createsubscription/', app.createsubscription);
-router.get('/createMelbourneSubscription/', app.createMelbourneSubscription);
-router.get('/createSydneySubscription/', app.createSydneySubscription);
-
-router.get('/sendmessage/', app.sendmessage);
+router.post('/sendmessage/', app.sendmessage);
 
 router.get('/receiveMessage/', app.receiveMessage);
 router.get('/getsubscription/', app.getSubscription);
